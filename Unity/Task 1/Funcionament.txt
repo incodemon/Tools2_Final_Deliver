@@ -1,0 +1,19 @@
+La tool custom ens permet convertir textures 2D importades pels artistes a Assets preparats per a que els level designers les utilitzin.
+ 
+
+A més la tool permet actualitzar una escena amb textures de graybox per les texures finals creades pels artistes.
+Per actualitzar l'escena només cal procurar que els arxius prefabs que formen part de la graybox del nivell s'nomenin igual que la textura associada.
+
+Aquesta tool s'inspira en el prototip de blasphemous.
+
+
+
+Per a la tool custom ens hem proposat 3 objectius.
+
+El primer objectiu era crear una tool pensada per abstreure el màxim possible les tasques de l'artista de les del dissenyador de nivells i programadors.
+Per fer-ho la tool demana un path a la carpeta on l'artista hi dipositara tots els seus assets. La tool demana una segona carpeta
+pensada pels dissenyadors de nivells, allà hi podran trobar totes les textures convertides a Sprite2D, amb la resolució correcta i sense filtre.
+
+El segon objectiu era estalviar-nos el temps d'haver de modificar els settings de les textures una per una.
+
+
