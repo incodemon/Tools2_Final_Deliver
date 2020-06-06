@@ -14,7 +14,7 @@
 		{
 			"name": "camera_main",
 			"movement": "free",
-			"position": [ 0, 0, 0 ],
+			"position": [ 0, 10, 0 ],
 			"direction": [ -1, -1, -1 ],
 			"fov": 65,
 			"near": 0.03,
