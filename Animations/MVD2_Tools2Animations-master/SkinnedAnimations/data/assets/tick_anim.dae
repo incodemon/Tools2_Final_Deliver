@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <asset>
+    <contributor>
+      <author>alun</author>
+      <authoring_tool>OpenCOLLADA2017;  Version: 1.6;  Revision: 68</authoring_tool>
+      <comments>
+			ColladaMaya export options: 
+			bakeTransforms=1;relativePaths=0;preserveSourceTree=0;copyTextures=0;exportTriangles=0;exportCgfxFileReferences=1;
+			isSampling=0;curveConstrainSampling=0;removeStaticCurves=1;exportPhysics=0;exportConvexMeshGeometries=1;exportPolygonMeshes=1;exportLights=1;
+			exportCameras=1;exportAnimationsOnly=0;exportSeparateFile=0;modelNameDAE=;exportJoints=1;exportSkin=1;exportAnimations=1;exportOptimizedBezierAnimation=0;exportInvisibleNodes=0;exportDefaultCameras=0;
+			exportTexCoords=1;exportNormals=1;exportNormalsPerVertex=1;exportVertexColors=1;exportVertexColorsPerVertex=1;
+			exportTexTangents=0;exportTangents=0;exportReferencedMaterials=0;exportMaterialsOnly=0;
+			exportXRefs=1;dereferenceXRefs=1;exportCameraAsLookat=0;cameraXFov=0;cameraYFov=1;encodedNames=1;doublePrecision=0
+		</comments>
+      <source_data>file:///Users/alun/Dropbox/Work/Code/Projects/OpenGL_Book/assets/maya_project/scenes/multi_joint.mb</source_data>
+    </contributor>
+    <created>2019-01-09T17:10:00</created>
+    <modified>2019-01-09T17:10:00</modified>
+    <unit name="centimeter" meter="0.01"/>
+    <up_axis>Y_UP</up_axis>
+  </asset>
+  <library_materials>
+    <material id="lambert1" name="lambert1">
+      <instance_effect url="#lambert1-fx"/>
+    </material>
+  </library_materials>
+  <library_effects>
+    <effect id="lambert1-fx">
+      <profile_COMMON>
+        <technique sid="common">
+          <lambert>
+            <emission>
+              <color>0 0 0 1</color>
+            </emission>
+            <ambient>
+              <color>0 0 0 1</color>
+            </ambient>
+            <diffuse>
+              <color>0.4 0.4 0.4 1</color>
+            </diffuse>
+            <transparent opaque="RGB_ZERO">
+              <color>0 0 0 1</color>
+            </transparent>
+            <transparency>
+              <float>1</float>
+            </transparency>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+      <extra>
+        <technique profile="OpenCOLLADAMaya">
+          <originalMayaNodeId sid="originalMayaNodeId" type="string">lambert1</originalMayaNodeId>
+        </technique>
+      </extra>
+    </effect>
+  </library_effects>
+  <library_visual_scenes>
+    <visual_scene id="VisualSceneNode" name="multi_joint">
+      <node id="_joint1" name="joint1" sid="joint1" type="JOINT">
+        <matrix sid="transform">-0.04685016 -0.9989019 0 0 0.9989019 -0.04685016 0 -0.06818182 0 0 1 0 0 0 0 1</matrix>
+        <node id="_joint1_joint2" name="joint2" sid="joint2" type="JOINT">
+          <matrix sid="transform">0 1 0 4.954545 -1 0 0 0 0 0 1 0 0 0 0 1</matrix>
+          <extra>
+            <technique profile="OpenCOLLADAMaya">
+              <originalMayaNodeId sid="originalMayaNodeId" type="string">joint2</originalMayaNodeId>
+            </technique>
+          </extra>
+        </node>
+        <extra>
+          <technique profile="OpenCOLLADAMaya">
+            <originalMayaNodeId sid="originalMayaNodeId" type="string">joint1</originalMayaNodeId>
+          </technique>
+        </extra>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  <library_animations>
+    <animation id="joint1.matrix__joint1">
+      <source id="joint1.matrix__joint1_transform-input" name="joint1.matrix__joint1_transform-input">
+        <float_array id="joint1.matrix__joint1_transform-input-array" count="97">0 0.04166662 0.08333331 0.125 0.1666666 0.2083333 0.25 0.2916666 0.3333333 0.375 0.4166666 0.4583333 0.5 0.5416667 0.5833333 0.625 0.6666667 0.7083333 0.75 0.7916667 0.8333333 0.875 0.9166667 0.9583333 1 1.041667 1.083333 1.125 1.166667 1.208333 1.25 1.291667 1.333333 1.375 1.416667 1.458333 1.5 1.541667 1.583333 1.625 1.666667 1.708333 1.75 1.791667 1.833333 1.875 1.916667 1.958333 2 2.041667 2.083333 2.125 2.166667 2.208333 2.25 2.291667 2.333333 2.375 2.416667 2.458333 2.5 2.541667 2.583333 2.625 2.666667 2.708333 2.75 2.791667 2.833333 2.875 2.916667 2.958333 3 3.041667 3.083333 3.125 3.166667 3.208333 3.25 3.291667 3.333333 3.375 3.416667 3.458333 3.5 3.541667 3.583333 3.625 3.666667 3.708333 3.75 3.791667 3.833333 3.875 3.916667 3.958333 4 </float_array>
+        <technique_common>
+          <accessor source="#joint1.matrix__joint1_transform-input-array" count="97" stride="1">
+            <param name="TIME" type="float"/>
+          </accessor>
+        </technique_common>
+        <technique profile="OpenCOLLADAMaya">
+          <pre_infinity sid="pre_infinity">CONSTANT</pre_infinity>
+          <post_infinity sid="post_infinity">CONSTANT</post_infinity>
+        </technique>
+      </source>
+      <source id="joint1.matrix__joint1_transform-output" name="joint1.matrix__joint1_transform-output">
+        <float_array id="joint1.matrix__joint1_transform-output-array" count="1552">-0.7300158 -0.6834303 0 0 0.6834303 -0.7300158 0 -0.06818181 0 0 1 0 0 0 0 1 -0.7300158 -0.6834303 0 0 0.6834303 -0.7300158 0 -0.06818181 0 0 1 0 0 0 0 1 -0.7286133 -0.6849253 0 0 0.6849253 -0.7286133 0 -0.06818181 0 0 1 0 0 0 0 1 -0.724469 -0.6893074 0 0 0.6893074 -0.724469 0 -0.06818181 0 0 1 0 0 0 0 1 -0.7176539 -0.6963999 0 0 0.6963999 -0.7176539 0 -0.06818181 0 0 1 0 0 0 0 1 -0.708213 -0.7059988 0 0 0.7059988 -0.708213 0 -0.06818181 0 0 1 0 0 0 0 1 -0.6961706 -0.7178764 0 0 0.7178764 -0.6961706 0 -0.06818181 0 0 1 0 0 0 0 1 -0.681537 -0.7317837 0 0 0.7317837 -0.681537 0 -0.06818181 0 0 1 0 0 0 0 1 -0.664314 -0.7474536 0 0 0.7474536 -0.664314 0 -0.06818181 0 0 1 0 0 0 0 1 -0.6445011 -0.7646034 0 0 0.7646034 -0.6445011 0 -0.06818181 0 0 1 0 0 0 0 1 -0.6221005 -0.7829374 0 0 0.7829374 -0.6221005 0 -0.06818181 0 0 1 0 0 0 0 1 -0.5971223 -0.8021503 0 0 0.8021503 -0.5971223 0 -0.06818181 0 0 1 0 0 0 0 1 -0.5695891 -0.8219296 0 0 0.8219296 -0.5695891 0 -0.06818181 0 0 1 0 0 0 0 1 -0.5395402 -0.8419598 0 0 0.8419598 -0.5395402 0 -0.06818181 0 0 1 0 0 0 0 1 -0.5070348 -0.8619256 0 0 0.8619256 -0.5070348 0 -0.06818181 0 0 1 0 0 0 0 1 -0.4721543 -0.8815159 0 0 0.8815159 -0.4721543 0 -0.06818181 0 0 1 0 0 0 0 1 -0.435005 -0.9004281 0 0 0.9004281 -0.435005 0 -0.06818181 0 0 1 0 0 0 0 1 -0.3957188 -0.9183717 0 0 0.9183717 -0.3957188 0 -0.06818181 0 0 1 0 0 0 0 1 -0.3544538 -0.9350736 0 0 0.9350736 -0.3544538 0 -0.06818181 0 0 1 0 0 0 0 1 -0.3113934 -0.9502811 0 0 0.9502811 -0.3113934 0 -0.06818181 0 0 1 0 0 0 0 1 -0.2667459 -0.9637669 0 0 0.9637669 -0.2667459 0 -0.06818181 0 0 1 0 0 0 0 1 -0.2207413 -0.9753324 0 0 0.9753324 -0.2207413 0 -0.06818181 0 0 1 0 0 0 0 1 -0.1736302 -0.984811 0 0 0.984811 -0.1736302 0 -0.06818181 0 0 1 0 0 0 0 1 -0.1256793 -0.9920709 0 0 0.9920709 -0.1256793 0 -0.06818181 0 0 1 0 0 0 0 1 -0.07716804 -0.9970181 0 0 0.9970181 -0.07716804 0 -0.06818181 0 0 1 0 0 0 0 1 -0.02838492 -0.9995971 0 0 0.9995971 -0.02838492 0 -0.06818181 0 0 1 0 0 0 0 1 0.02037751 -0.9997923 0 0 0.9997923 0.02037751 0 -0.06818181 0 0 1 0 0 0 0 1 0.06882661 -0.9976286 0 0 0.9976286 0.06882661 0 -0.06818181 0 0 1 0 0 0 0 1 0.1166745 -0.9931702 0 0 0.9931702 0.1166745 0 -0.06818181 0 0 1 0 0 0 0 1 0.1636421 -0.9865198 0 0 0.9865198 0.1636421 0 -0.06818181 0 0 1 0 0 0 0 1 0.2094627 -0.9778167 0 0 0.9778167 0.2094627 0 -0.06818181 0 0 1 0 0 0 0 1 0.2538864 -0.967234 0 0 0.967234 0.2538864 0 -0.06818181 0 0 1 0 0 0 0 1 0.2966825 -0.9549762 0 0 0.9549762 0.2966825 0 -0.06818181 0 0 1 0 0 0 0 1 0.3376415 -0.9412748 0 0 0.9412748 0.3376415 0 -0.06818181 0 0 1 0 0 0 0 1 0.3765778 -0.926385 0 0 0.926385 0.3765778 0 -0.06818181 0 0 1 0 0 0 0 1 0.4133295 -0.9105815 0 0 0.9105815 0.4133295 0 -0.06818181 0 0 1 0 0 0 0 1 0.4477589 -0.8941543 0 0 0.8941543 0.4477589 0 -0.06818181 0 0 1 0 0 0 0 1 0.4797522 -0.877404 0 0 0.877404 0.4797522 0 -0.06818181 0 0 1 0 0 0 0 1 0.5092174 -0.860638 0 0 0.860638 0.5092174 0 -0.06818181 0 0 1 0 0 0 0 1 0.5360821 -0.8441659 0 0 0.8441659 0.5360821 0 -0.06818181 0 0 1 0 0 0 0 1 0.5602909 -0.8282959 0 0 0.8282959 0.5602909 0 -0.06818181 0 0 1 0 0 0 0 1 0.5818017 -0.8133307 0 0 0.8133307 0.5818017 0 -0.06818181 0 0 1 0 0 0 0 1 0.6005808 -0.7995641 0 0 0.7995641 0.6005808 0 -0.06818181 0 0 1 0 0 0 0 1 0.6165992 -0.7872773 0 0 0.7872773 0.6165992 0 -0.06818181 0 0 1 0 0 0 0 1 0.6298268 -0.7767356 0 0 0.7767356 0.6298268 0 -0.06818181 0 0 1 0 0 0 0 1 0.6402272 -0.7681856 0 0 0.7681856 0.6402272 0 -0.06818181 0 0 1 0 0 0 0 1 0.6477521 -0.7618512 0 0 0.7618512 0.6477521 0 -0.06818181 0 0 1 0 0 0 0 1 0.6523354 -0.7579305 0 0 0.7579305 0.6523354 0 -0.06818181 0 0 1 0 0 0 0 1 0.6538876 -0.7565917 0 0 0.7565917 0.6538876 0 -0.06818181 0 0 1 0 0 0 0 1 0.6524002 -0.7578747 0 0 0.7578747 0.6524002 0 -0.06818181 0 0 1 0 0 0 0 1 0.648012 -0.7616301 0 0 0.7616301 0.648012 0 -0.06818181 0 0 1 0 0 0 0 1 0.6408138 -0.7676964 0 0 0.7676964 0.6408138 0 -0.06818181 0 0 1 0 0 0 0 1 0.630874 -0.7758854 0 0 0.7758854 0.630874 0 -0.06818181 0 0 1 0 0 0 0 1 0.6182437 -0.7859865 0 0 0.7859865 0.6182437 0 -0.06818181 0 0 1 0 0 0 0 1 0.6029618 -0.7977701 0 0 0.7977701 0.6029618 0 -0.06818181 0 0 1 0 0 0 0 1 0.5850603 -0.8109898 0 0 0.8109898 0.5850603 0 -0.06818181 0 0 1 0 0 0 0 1 0.5645692 -0.8253858 0 0 0.8253858 0.5645692 0 -0.06818181 0 0 1 0 0 0 0 1 0.5415205 -0.8406875 0 0 0.8406875 0.5415205 0 -0.06818181 0 0 1 0 0 0 0 1 0.5159534 -0.8566167 0 0 0.8566167 0.5159534 0 -0.06818181 0 0 1 0 0 0 0 1 0.487917 -0.87289 0 0 0.87289 0.487917 0 -0.06818181 0 0 1 0 0 0 0 1 0.4574744 -0.8892228 0 0 0.8892228 0.4574744 0 -0.06818181 0 0 1 0 0 0 0 1 0.4247049 -0.9053319 0 0 0.9053319 0.4247049 0 -0.06818181 0 0 1 0 0 0 0 1 0.389707 -0.9209389 0 0 0.9209389 0.389707 0 -0.06818181 0 0 1 0 0 0 0 1 0.3525983 -0.9357748 0 0 0.9357748 0.3525983 0 -0.06818181 0 0 1 0 0 0 0 1 0.3135182 -0.9495822 0 0 0.9495822 0.3135182 0 -0.06818181 0 0 1 0 0 0 0 1 0.2726274 -0.9621197 0 0 0.9621197 0.2726274 0 -0.06818181 0 0 1 0 0 0 0 1 0.2301067 -0.9731654 0 0 0.9731654 0.2301067 0 -0.06818181 0 0 1 0 0 0 0 1 0.1861574 -0.9825199 0 0 0.9825199 0.1861574 0 -0.06818181 0 0 1 0 0 0 0 1 0.1409988 -0.9900098 0 0 0.9900098 0.1409988 0 -0.06818181 0 0 1 0 0 0 0 1 0.09486556 -0.9954901 0 0 0.9954901 0.09486556 0 -0.06818181 0 0 1 0 0 0 0 1 0.04800623 -0.998847 0 0 0.998847 0.04800623 0 -0.06818181 0 0 1 0 0 0 0 1 6.79478e-4 -0.9999998 0 0 0.9999998 6.79478e-4 0 -0.06818181 0 0 1 0 0 0 0 1 -0.04685014 -0.9989019 0 0 0.9989019 -0.04685014 0 -0.06818181 0 0 1 0 0 0 0 1 -0.09431421 -0.9955425 0 0 0.9955425 -0.09431421 0 -0.06818181 0 0 1 0 0 0 0 1 -0.1414451 -0.9899461 0 0 0.9899461 -0.1414451 0 -0.06818181 0 0 1 0 0 0 0 1 -0.1879804 -0.9821728 0 0 0.9821728 -0.1879804 0 -0.06818181 0 0 1 0 0 0 0 1 -0.233665 -0.9723172 0 0 0.9723172 -0.233665 0 -0.06818181 0 0 1 0 0 0 0 1 -0.2782557 -0.960507 0 0 0.960507 -0.2782557 0 -0.06818181 0 0 1 0 0 0 0 1 -0.3215245 -0.9469013 0 0 0.9469013 -0.3215245 0 -0.06818181 0 0 1 0 0 0 0 1 -0.3632604 -0.9316877 0 0 0.9316877 -0.3632604 0 -0.06818181 0 0 1 0 0 0 0 1 -0.4032719 -0.9150802 0 0 0.9150802 -0.4032719 0 -0.06818181 0 0 1 0 0 0 0 1 -0.4413899 -0.8973154 0 0 0.8973154 -0.4413899 0 -0.06818181 0 0 1 0 0 0 0 1 -0.4774668 -0.8786498 0 0 0.8786498 -0.4774668 0 -0.06818181 0 0 1 0 0 0 0 1 -0.5113781 -0.8593558 0 0 0.8593558 -0.5113781 0 -0.06818181 0 0 1 0 0 0 0 1 -0.5430222 -0.8397184 0 0 0.8397184 -0.5430222 0 -0.06818181 0 0 1 0 0 0 0 1 -0.5723187 -0.8200313 0 0 0.8200313 -0.5723187 0 -0.06818181 0 0 1 0 0 0 0 1 -0.5992071 -0.8005942 0 0 0.8005942 -0.5992071 0 -0.06818181 0 0 1 0 0 0 0 1 -0.6236445 -0.7817081 0 0 0.7817081 -0.6236445 0 -0.06818181 0 0 1 0 0 0 0 1 -0.6456027 -0.7636735 0 0 0.7636735 -0.6456027 0 -0.06818181 0 0 1 0 0 0 0 1 -0.6650637 -0.7467866 0 0 0.7467866 -0.6650637 0 -0.06818181 0 0 1 0 0 0 0 1 -0.6820171 -0.7313362 0 0 0.7313362 -0.6820171 0 -0.06818181 0 0 1 0 0 0 0 1 -0.6964535 -0.7176019 0 0 0.7176019 -0.6964535 0 -0.06818181 0 0 1 0 0 0 0 1 -0.7083607 -0.7058506 0 0 0.7058506 -0.7083607 0 -0.06818181 0 0 1 0 0 0 0 1 -0.7177177 -0.6963342 0 0 0.6963342 -0.7177177 0 -0.06818181 0 0 1 0 0 0 0 1 -0.7244884 -0.689287 0 0 0.689287 -0.7244884 0 -0.06818181 0 0 1 0 0 0 0 1 -0.7286158 -0.6849226 0 0 0.6849226 -0.7286158 0 -0.06818181 0 0 1 0 0 0 0 1 -0.7300158 -0.6834303 0 0 0.6834303 -0.7300158 0 -0.06818181 0 0 1 0 0 0 0 1 </float_array>
+        <technique_common>
+          <accessor source="#joint1.matrix__joint1_transform-output-array" count="97" stride="16">
+            <param name="TRANSFORM" type="float4x4"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="joint1.matrix__joint1_transform-interpolation" name="joint1.matrix__joint1_transform-interpolation">
+        <Name_array id="joint1.matrix__joint1_transform-interpolation-array" count="97">LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR </Name_array>
+        <technique_common>
+          <accessor source="#joint1.matrix__joint1_transform-interpolation-array" count="97" stride="1">
+            <param name="INTERPOLATION" type="name"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <sampler id="joint1.matrix__joint1_transform-sampler">
+        <input semantic="INPUT" source="#joint1.matrix__joint1_transform-input"/>
+        <input semantic="OUTPUT" source="#joint1.matrix__joint1_transform-output"/>
+        <input semantic="INTERPOLATION" source="#joint1.matrix__joint1_transform-interpolation"/>
+      </sampler>
+      <channel source="#joint1.matrix__joint1_transform-sampler" target="_joint1/transform"/>
+    </animation>
+  </library_animations>
+  <scene>
+    <instance_visual_scene url="#VisualSceneNode"/>
+  </scene>
+  <extra>
+    <technique profile="COLLADA">
+      <source_data_base_uri>file:///Users/alun/Dropbox/Work/Code/Projects/OpenGL_Book/assets/maya_project/</source_data_base_uri>
+    </technique>
+  </extra>
+</COLLADA>
