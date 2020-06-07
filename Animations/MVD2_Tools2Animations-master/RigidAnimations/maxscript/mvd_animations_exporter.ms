@@ -43,7 +43,7 @@ fn exportAnimation filename obj nframes =
 	allObjects = $*
 
 
-f = createFile (outputDirectory + filename +".anim")
+f = createFile ( outputDirectory + filename +".anim")
 	
 for obj in allObjects do(
 	frames = fetchFrames obj nframes
@@ -73,4 +73,4 @@ for obj in allObjects do(
 	
 )
 
-exportAnimation "Door3" $* 55
+exportAnimation "animtest" $* 55

@@ -880,80 +880,87 @@ bool Parsers::parseJSONLevel(std::string filename,
 
 bool Parsers::parseAnimation(std::string filename) {
     
-    std::string line;
+    std::string line = "notnull";
     std::ifstream file(filename);
     int line_counter = 0;
     int frames_per_second = 0;
+    int frames_to_read = 0;
+    int count =0;
     if (file.is_open())
     {
-        //get first line of file for target entity
-        std::string target_ent = "";
-        while (std::getline(file, line))
+       //We repeat this process until the line we read is space
+        while (line != "")
         {
-            if (line_counter == 0){
-                target_ent = line;
+            //get first line of file for target entity
+            std::string target_ent = "";
+            while (std::getline(file, line))
+            {
+                if (line_counter == 0) {
+                    target_ent = line;
+                    printf("%s",target_ent);
+                }
+                if (line_counter == 1) {
+                    frames_per_second = stoi(line);
+                    frames_to_read = frames_per_second;
+                    break;
+                }
+                line_counter++;
             }
-            if (line_counter == 1){
-                frames_per_second = stoi(line);
-                break;
+
+            if (target_ent != "") {
+                int entity_id = ECS.getEntity(target_ent);
+                if (entity_id == -1) {
+                    std::cout << "ERROR: entity does not exist in animation file" << filename << "\n";
+                    return false;
+                }
+
+                Animation& anim = ECS.createComponentForEntity<Animation>(entity_id);
+
+                //parse rest of file line by line (55 times)
+                while (std::getline(file, line) && line_counter < frames_to_read)
+                {
+                    //split line string
+                    std::vector<std::string> w;
+                    split(line, " ", w);
+
+                    //empty model matrix for frame
+                    lm::mat4 new_frame;
+
+                    //make translation matrix
+                    lm::mat4 translation;
+                    translation.makeTranslationMatrix((float)atof(w[1].c_str()), (float)atof(w[2].c_str()), (float)atof(w[3].c_str()));
+
+                    //make rotation matrix
+                    lm::quat qrot((float)atof(w[4].c_str()), (float)atof(w[5].c_str()), (float)atof(w[6].c_str()));
+                    lm::mat4 rotation;
+                    rotation.makeRotationMatrix(qrot);
+
+                    //make scale matrix
+                    lm::mat4 scale;
+                    scale.makeScaleMatrix((float)atof(w[7].c_str()), (float)atof(w[8].c_str()), (float)atof(w[9].c_str()));
+
+                    //multiply the lot
+                    new_frame = translation * rotation * scale * new_frame;
+
+                    //add the keyframe
+                    anim.keyframes.push_back(new_frame);
+                    line_counter++;
+                }
+                line_counter = 0;
+                count++;
+                //set number of keyframes
+                anim.num_frames = (GLuint)anim.keyframes.size();
+                anim.ms_frame = 1000.0f / (float)frames_per_second;
             }
-            line_counter++;
-        }
-        
-        if (target_ent != "") {
-            int entity_id = ECS.getEntity(target_ent);
-            if (entity_id == -1) {
-                std::cout << "ERROR: entity does not exist in animation file" << filename << "\n";
+            else {
+                std::cout << "ERROR: animation file does not contain entity definition " << filename << "\n";
                 return false;
             }
             
-            Animation& anim = ECS.createComponentForEntity<Animation>(entity_id);
-            
-            //parse rest of file line by line
-            while (std::getline(file, line))
-            {
-                //split line string
-                std::vector<std::string> w;
-                split(line, " ", w);
-                
-                //empty model matrix for frame
-                lm::mat4 new_frame;
-                
-                //make translation matrix
-                lm::mat4 translation;
-                translation.makeTranslationMatrix((float)atof(w[1].c_str()), (float)atof(w[2].c_str()), (float)atof(w[3].c_str()));
-                
-                //make rotation matrix
-                lm::quat qrot((float)atof(w[4].c_str()), (float)atof(w[5].c_str()), (float)atof(w[6].c_str()));
-                lm::mat4 rotation;
-                rotation.makeRotationMatrix(qrot);
-                
-                //make scale matrix
-                lm::mat4 scale;
-                scale.makeScaleMatrix((float)atof(w[7].c_str()), (float)atof(w[8].c_str()), (float)atof(w[9].c_str()));
-                
-                //multiply the lot
-                new_frame = translation * rotation * scale * new_frame;
-                
-                //add the keyframe
-                anim.keyframes.push_back(new_frame);
-            }
-            //set number of keyframes
-            anim.num_frames = (GLuint)anim.keyframes.size();
-            anim.ms_frame = 1000.0f / (float)frames_per_second;
-        }
-        else {
-            std::cout << "ERROR: animation file does not contain entity definition " << filename << "\n";
-            return false;
-        }
-        
-        
-        return true;
+       }return true;
     } else {
         std::cout << "ERROR: could not open file " << filename << "\n";
         return false;
     }
-    
-    
 }
 

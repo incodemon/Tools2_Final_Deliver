@@ -33,18 +33,32 @@ void Game::init(int w, int h) {
     
 	Shader* phong_shader = graphics_system_.loadShader("data/shaders/phong.vert", "data/shaders/phong.frag");
 
-    Mesh& ball_mesh = ECS.createComponentForEntity<Mesh>(ECS.createEntity("ball"));
+   /* Mesh& ball_mesh = ECS.createComponentForEntity<Mesh>(ECS.createEntity("ball"));
     ball_mesh.geometry = graphics_system_.createGeometryFromFile("data/assets/ball.obj");
     ball_mesh.material = graphics_system_.createMaterial();
-    graphics_system_.getMaterial(ball_mesh.material).shader_id = phong_shader->program;
+    graphics_system_.getMaterial(ball_mesh.material).shader_id = phong_shader->program;*/
+
+
+	Mesh& ball1_mesh = ECS.createComponentForEntity<Mesh>(ECS.createEntity("ball1"));
+	ball1_mesh.geometry = graphics_system_.createGeometryFromFile("data/assets/ball.obj");
+	ball1_mesh.material = graphics_system_.createMaterial();
+	graphics_system_.getMaterial(ball1_mesh.material).shader_id = phong_shader->program;
+
+
+	Mesh& ball2_mesh = ECS.createComponentForEntity<Mesh>(ECS.createEntity("ball2"));
+	ball2_mesh.geometry = graphics_system_.createGeometryFromFile("data/assets/ball.obj");
+	ball2_mesh.material = graphics_system_.createMaterial();
+	graphics_system_.getMaterial(ball2_mesh.material).shader_id = phong_shader->program;
+
+
     
-    Parsers::parseAnimation("data/assets/bounce4.anim"); 
+    Parsers::parseAnimation("data/assets/animtest.anim"); 
     
     int plane_ent = ECS.createEntity("plane");
     ECS.getComponentFromEntity<Transform>(plane_ent).translate(0, -1.0f, 0);
     Mesh& plane_mesh = ECS.createComponentForEntity<Mesh>(plane_ent);
     plane_mesh.geometry = graphics_system_.createGeometryFromFile("data/assets/plane_20x20.obj");
-    plane_mesh.material = ball_mesh.material;
+  //  plane_mesh.material = ball_mesh.material;
     
     
     int light_ent = ECS.createEntity("Light");
