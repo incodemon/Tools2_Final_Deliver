@@ -4,7 +4,7 @@
 -- Second line: frames per second
 -- Animation frame composed by:
 
-global outputDirectory = "../data/assets/"
+global outputDirectory = "./data/assets/" 
 global MaxToMVD = rotateXMatrix -90
 
 struct MVDAnimationFrame
@@ -39,17 +39,19 @@ fn fetchFrames obj nframes =
 -- Method to export the animation file
 fn exportAnimation filename obj nframes = 
 (
-	-- Read the frames
-	frames = fetchFrames obj nframes
+
+	allObjects = $*
+
+
+f = createFile (outputDirectory + filename +".anim")
 	
-	-- Write the file with the frame data
-	f = createFile (outputDirectory + filename +".anim")
+for obj in allObjects do(
+	frames = fetchFrames obj nframes
+	print obj.name
+	print frames
 	format (obj.name + "\n") to:f
 	format ((nframes as string) + "\n") to:f
 	
-	-- TO-DO, SUPPORT MORE THAN ONE OBJECT PER FILE (N OBJECTS)
-	-- Animate a door 
-
 	for i = 1 to nframes do 
 	(
 		local cframe = frames[i]
@@ -66,8 +68,9 @@ fn exportAnimation filename obj nframes =
 		format str_final to:f
 	)
 
-	
+)
 	close f
+	
 )
 
-exportAnimation "bounce4" $ 55
+exportAnimation "Door3" $* 55
